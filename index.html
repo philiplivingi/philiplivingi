@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elizabeth Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+    body {background: linear-gradient(to right, #f3e6ff, #efe9ff); color:#333; overflow-x:hidden; position:relative;}
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('Screenshot_20250913_232414.jpg') no-repeat center center/cover;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    header {
+      width:100%; padding:1rem 5%; background:#ffffffcc; backdrop-filter:blur(10px);
+      box-shadow:0 4px 15px rgba(0,0,0,0.08); position:sticky; top:0; z-index:100;
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+      animation:slideDown 1s ease forwards;
+    }
+    
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #6a0dad;
+      text-shadow: 0 0 12px #9b59b6;
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+    }
+    
+    .logo::before, .logo::after {
+      content: "❧";
+      font-family: 'Arial', sans-serif;
+      font-size: 1.8rem;
+      color: #9b59b6;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+    }
+    
+    .logo::before {
+      left: -15px;
+    }
+    
+    .logo::after {
+      right: -15px;
+    }
+
+    nav {display:flex; align-items:center; flex-wrap:wrap; gap:1rem; position:relative;}
+    nav ul {display:flex; list-style:none; gap:1rem; flex-wrap:wrap;}
+    nav ul li a {
+      text-decoration:none; padding:0.6rem 1rem; border-radius:8px; transition:0.3s;
+      font-weight:500; color:#555; display:block; position:relative; overflow:hidden;
+    }
+    nav ul li a::after {
+      content:""; position:absolute; left:0; bottom:0; width:0; height:3px;
+      background:#6a0dad; transition:0.4s;
+    }
+    nav ul li a:hover::after {width:100%;}
+    nav ul li a:hover {color:#6a0dad;}
+
+    .header-social {display:flex; gap:0.8rem;}
+    .header-social a {color:#6a0dad; font-size:1.2rem; transition:0.3s;}
+    .header-social a:hover {color:#9b59b6;}
+
+    .hamburger {display:none; font-size:1.6rem; cursor:pointer; color:#6a0dad;}
+    nav ul.show {
+      display:flex; flex-direction:column; position:absolute; top:60px; left:0; width:100%;
+      background:#fff; padding:1rem 0; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      border-radius:0 0 12px 12px; animation:slideDown 0.4s ease forwards;
+    }
+    @keyframes slideDown {from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);}}
+
+    .hero {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:5rem 8%; flex-wrap:wrap;
+      animation:fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+
+    .hero-text {flex:1; min-width:280px; animation:slideLeft 1.2s ease;}
+    @keyframes slideLeft {from{opacity:0; transform:translateX(-50px);} to{opacity:1; transform:translateX(0);}}
+
+    .hero-text h1 {
+      font-size:3rem; 
+      color:#6a0dad; 
+      margin-bottom:1rem;
+      position: relative;
+    }
+    
+    .hero-text h1 .decorative-name {
+      font-family: 'Parisienne', cursive;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #8e44ad;
+      text-shadow: 2px 2px 4px rgba(154, 89, 181, 0.3);
+      display: inline-block;
+      position: relative;
+      padding: 0 15px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+      border-radius: 50% 20% / 10% 40%;
+      transform: rotate(-2deg);
+      animation: nameGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes nameGlow {
+      0% {
+        text-shadow: 2px 2px 4px rgba(154, 89, 181, 0.3);
+      }
+      100% {
+        text-shadow: 2px 2px 8px rgba(154, 89, 181, 0.6), 0 0 15px rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .hero-text p {
+      font-size:1.1rem; 
+      line-height:1.7; 
+      max-width:520px; 
+      margin-bottom:2rem;
+      color: #6c3483; /* Darker, more sophisticated purple */
+      background: linear-gradient(135deg, #6c3483, #8e44ad); /* Subtle gradient */
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 1px 2px rgba(108, 52, 131, 0.1);
+      padding: 10px 0;
+      position: relative;
+    }
+
+    /* Removed the ::before underline element */
+
+    .buttons {display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem;}
+    .btn {
+      padding:0.8rem 1.8rem; border:none; border-radius:30px; font-size:1rem; font-weight:600;
+      cursor:pointer; transition:0.3s; position:relative; overflow:hidden;
+    }
+    .btn::before {
+      content:""; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:rgba(255,255,255,0.4); transform:skewX(-20deg);
+    }
+    .btn:hover::before {left:100%; transition:0.6s;}
+    .btn-primary {background:#6a0dad; color:#fff;}
+    .btn-primary:hover {background:#4b0a91;}
+    .btn-outline {border:2px solid #9b59b6; color:#9b59b6; background:transparent;}
+    .btn-outline:hover {background:#9b59b6; color:#fff;}
+
+    .hero-image {
+      flex:1; 
+      min-width:250px; 
+      display:flex; 
+      justify-content:center; 
+      margin-top: -1.5rem; /* Moved the image higher */
+      position:relative;
+    }
+    .hero-image-container {
+      width: 350px; /* Increased from 280px */
+      height: 350px; /* Increased from 280px */
+      position:relative;
+    }
+    .hero-image-container img {
+      width:100%; 
+      height:100%; 
+      object-fit:cover; 
+      border-radius:50%;
+      border:8px solid #e6d6fa; /* Slightly thicker border */
+      box-shadow:0 15px 30px rgba(0,0,0,0.2); /* Enhanced shadow */
+      position:absolute;
+      top:0; 
+      left:0;
+      opacity:0;
+      transition:opacity 1.5s ease-in-out;
+    }
+    .hero-image-container img.active {
+      opacity:1;
+    }
+
+    .hero-social {display:flex; gap:1.5rem; margin-top:1rem; justify-content:flex-start;}
+    .hero-social a {color:#6a0dad; font-size:1.5rem; transition:0.3s;}
+    .hero-social a:hover {color:#9b59b6; transform:scale(1.2);}
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #6a0dad;
+      margin: 3rem 0 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, #9b59b6, #6a0dad);
+      border-radius: 2px;
+    }
+
+    .skills {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;
+      max-width:1000px; margin:2rem auto 4rem; padding:2rem; background:#fff; border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+    .skill-box {
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:1.5rem; background:#f9f6ff; border-radius:15px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05); width:120px; transition:0.3s;
+      text-align:center;
+    }
+    .skill-box:hover {transform:translateY(-5px);}
+    .skill-box i {
+      font-size:2rem; color:#6a0dad; margin-bottom:0.5rem;
+      transition:0.3s;
+    }
+    .skill-box:hover i {color:#9b59b6; transform:scale(1.2);}
+    .skill-box p {
+      margin-top:0.5rem; 
+      font-weight:500; 
+      color:#6c3483; /* Harmonized with description color */
+      text-shadow: 0 1px 1px rgba(108, 52, 131, 0.1);
+    }
+
+    .portfolio {
+      padding: 2rem 5%;
+      margin: 2rem auto 4rem;
+      max-width: 1200px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .portfolio-item {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+    }
+    .portfolio-img {
+      width: 100%;
+      height: 200px;
+      background: #f9f6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6a0dad;
+      font-size: 3rem;
+    }
+    .portfolio-info {
+      padding: 1.5rem;
+    }
+    .portfolio-info h3 {
+      color: #6a0dad;
+      margin-bottom: 0.5rem;
+    }
+    .portfolio-info p {
+      color: #6c3483; /* Harmonized with description color */
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .portfolio-link {
+      display: inline-block;
+      color: #6a0dad;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .portfolio-link:hover {
+      color: #9b59b6;
+    }
+
+    .contact {
+      padding:4rem 8%; background:#fff; border-radius:20px; margin:4rem auto;
+      max-width:1000px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+    .contact h2 {
+      text-align:center; font-size:2rem; color:#6a0dad; margin-bottom:2rem;
+    }
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: #f9f6ff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .contact-info i {
+      font-size:1.5rem;
+      color:#6a0dad;
+      margin-right: 1rem;
+      width: 30px;
+    }
+    .contact-info p {
+      font-size:1rem;
+      color:#6c3483; /* Harmonized with description color */
+    }
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #6a0dad;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e6d6fa;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #6a0dad;
+      outline: none;
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #6a0dad;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .submit-btn:hover {
+      background: #4b0a91;
+    }
+
+    footer {
+      text-align:center; padding:1.5rem; background:#6a0dad; color:white;
+      font-size:0.9rem; margin-top:2rem;
+    }
+
+    #scrollTop {
+      position:fixed; bottom:20px; right:20px; background:#6a0dad; color:white;
+      border:none; padding:12px; border-radius:50%; cursor:pointer;
+      font-size:1.2rem; box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      display:none; transition:0.3s; z-index: 99;
+    }
+    #scrollTop:hover {background:#4b0a91;}
+
+    @media (max-width:1024px) {
+      .hero {padding:4rem 5%;}
+      .hero-text h1 {font-size:2.5rem;}
+      .hero-text h1 .decorative-name {font-size: 3rem;}
+      .hero-image-container {
+        width: 300px; /* Adjusted for tablet */
+        height: 300px;
+      }
+    }
+    @media (max-width:768px) {
+      header {justify-content:space-between; padding:1rem 2rem;}
+      .hamburger {display:block;}
+      nav ul {display:none;}
+      .hero {
+        flex-direction:column-reverse; 
+        text-align:center; 
+        padding:2rem 2rem;
+      }
+      .hero-text h1 {font-size:2rem;}
+      .hero-text h1 .decorative-name {font-size: 2.5rem;}
+      .hero-text p {margin:1rem auto 2rem;}
+      .buttons {justify-content:center;}
+      .hero-social {justify-content:center;}
+      .hero-image {
+        margin-top: 0; /* Reset for mobile */
+      }
+      .hero-image-container {
+        width: 270px; /* Adjusted for mobile */
+        height: 270px;
+      }
+      .skills {flex-direction:row; justify-content:center;}
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+    @media (max-width:480px) {
+      .logo {font-size: 2rem;}
+      .logo::before, .logo::after {font-size: 1.5rem;}
+      .hero-text h1 {font-size:1.8rem;}
+      .hero-text h1 .decorative-name {font-size: 2.2rem;}
+      .hero-text p {font-size:1rem;}
+      .btn {padding:0.6rem 1.4rem; font-size:0.95rem;}
+      .hero-social a {font-size:1.3rem;}
+      nav ul li a {padding:0.5rem 0.8rem; font-size:0.95rem;}
+      .skill-box {width:100px; padding:1rem;}
+      .section-title {
+        font-size: 2rem;
+      }
+      .hero-image-container {
+        width: 240px; /* Adjusted for small mobile */
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Elizabeth</div>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="header-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hello, I'm <span class="decorative-name">Elizabeth</span><br>A Web Developer</h1>
+      <p>Welcome to my portfolio! I'm Elizabeth, a creative developer passionate about building beautiful, responsive, and user-friendly websites. From blogs to e-commerce, I turn ideas into reality with code.</p>
+      <div class="buttons">
+        <button class="btn btn-primary">Hire Me</button>
+        <button class="btn btn-outline" id="viewPortfolioBtn">Portfolio</button>
+      </div>
+      <div class="hero-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-container">
+        <img src="/final/IMG_20251003_074836.jpg" alt="Elizabeth" class="active">
+        <img src="/final/IMG_20251003_080829.jpg" alt="Elizabeth">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <i class="fas fa-graduation-cap"></i>
+        <p>Education</p>
+      </div>
+      <div class="skill-box">
+        <i class="fas fa-briefcase"></i>
+        <p>Experience</p>
+      </div>
+      <div class="skill-box">
+        <i class="fas fa-project-diagram"></i>
+        <p>Projects</p>
+      </div>
+      <div class="skill-box">
+        <i class="fas fa-award"></i>
+        <p>Certifications</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <i class="fab fa-html5"></i>
+        <p>HTML5</p>
+      </div>
+      <div class="skill-box">
+        <i class="fab fa-css3-alt"></i>
+        <p>CSS3</p>
+      </div>
+      <div class="skill-box">
+        <i class="fab fa-js-square"></i>
+        <p>JavaScript</p>
+      </div>
+      <div class="skill-box">
+        <i class="fab fa-react"></i>
+        <p>React</p>
+      </div>
+      <div class="skill-box">
+        <i class="fab fa-node"></i>
+        <p>Node.js</p>
+      </div>
+      <div class="skill-box">
+        <i class="fab fa-python"></i>
+        <p>Python</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio">
+    <h2 class="section-title">My Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="portfolio-info">
+          <h3>E-commerce Website</h3>
+          <p>A fully responsive e-commerce platform with shopping cart, payment integration, and user authentication.</p>
+          <a href="#" class="portfolio-link">View Project →</a>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <i class="fas fa-blog"></i>
+        </div>
+        <div class="portfolio-info">
+          <h3>Blog Platform</h3>
+          <p>A modern blogging platform with rich text editor, commenting system, and social media integration.</p>
+          <a href="#" class="portfolio-link">View Project →</a>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="portfolio-info">
+          <h3>Weather App</h3>
+          <p>A sleek weather application with location detection, 7-day forecasts, and beautiful UI animations.</p>
+          <a href="#" class="portfolio-link">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div>
+          <i class="fas fa-envelope"></i>
+          <p>mambwe@gmail.com</p>
+        </div>
+        <div>
+          <i class="fas fa-phone"></i>
+          <p><a href="tel:+260760872243" style="color: #6c3483; text-decoration: none;">+260760872243</a></p>
+        </div>
+        <div>
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Ndola, Zambia</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Created by Philip Livingi 💻
+  </footer>
+
+  <button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navUl = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => {
+      navUl.classList.toggle('show');
+    });
+
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('show');
+      });
+    });
+
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    document.getElementById('viewPortfolioBtn').addEventListener('click', () => {
+      document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'});
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      this.reset();
+    });
+
+    // Image exchange functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.hero-image-container img');
+      let currentIndex = 0;
+      
+      function changeImage() {
+        // Remove active class from current image
+        images[currentIndex].classList.remove('active');
+        
+        // Calculate next index
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // Add active class to next image
+        images[currentIndex].classList.add('active');
+      }
+      
+      // Change image every 5 seconds
+      setInterval(changeImage, 5000);
+    });
+  </script>
+</body>
+</html>
